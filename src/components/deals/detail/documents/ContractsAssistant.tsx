@@ -44,6 +44,11 @@ export const ContractsAssistant = ({ selectedDocument, onClose, onMinimize }: Co
       };
       
       setMessages(prev => [...prev, userMessage]);
+      
+      // Lowercase version of message for easier text matching
+      const lowerCaseMessage = message.toLowerCase();
+      
+      // Clear the input
       setMessage("");
       
       // Simulate AI response based on user query and selected document
@@ -52,8 +57,6 @@ export const ContractsAssistant = ({ selectedDocument, onClose, onMinimize }: Co
         
         // Generate specific responses based on the selected document and user query
         if (selectedDocument) {
-          const lowerCaseMessage = message.toLowerCase();
-          
           if (selectedDocument.id === "doc-004" && lowerCaseMessage.includes("change")) {
             responseText = "This amendment increases the facility from $45M to $50M and extends the maturity by 6 months. It also relaxes the Net Leverage covenant from 3.5× to 4.0× until 2026 (see Section 4.2).";
           } else if (selectedDocument.id === "doc-001" && (lowerCaseMessage.includes("extract") || lowerCaseMessage.includes("covenant"))) {
