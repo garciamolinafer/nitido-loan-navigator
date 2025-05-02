@@ -1,13 +1,28 @@
 
+import { useState } from "react";
 import Layout from "@/components/layout/Layout";
+import { CoworkerHeader } from "@/components/coworker/CoworkerHeader";
+import { CoworkerWorkflowPanel } from "@/components/coworker/CoworkerWorkflowPanel";
+import { CoworkerSidebar } from "@/components/coworker/CoworkerSidebar";
+import { CoworkerProvider } from "@/hooks/useCoworker";
 
 const Coworker = () => {
+  const [activeView, setActiveView] = useState<"builder" | "dashboard">("builder");
+  
   return (
     <Layout title="Coworker (Agentic Hub)">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl font-bold mb-6">Coworker (Agentic Hub)</h2>
-        <p>This is where the coworker/agentic hub will be implemented.</p>
-      </div>
+      <CoworkerProvider>
+        <div className="flex h-[calc(100vh-120px)] overflow-hidden">
+          <CoworkerSidebar />
+          <div className="flex-1 flex flex-col">
+            <CoworkerHeader 
+              activeView={activeView} 
+              onViewChange={setActiveView} 
+            />
+            <CoworkerWorkflowPanel activeView={activeView} />
+          </div>
+        </div>
+      </CoworkerProvider>
     </Layout>
   );
 };
