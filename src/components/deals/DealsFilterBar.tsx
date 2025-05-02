@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -11,7 +10,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator 
 } from "@/components/ui/dropdown-menu";
-import { Filter, Search, ArrowDown, ArrowUp } from "lucide-react";
+import { Filter, Search, ArrowDown, ArrowUp, X } from "lucide-react";
 
 interface DealsFilterBarProps {
   onSearch: (term: string) => void;
