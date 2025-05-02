@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
@@ -17,6 +16,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useNavigate } from "react-router-dom";
+import { useNitidinaChat } from "@/hooks/useNitidinaChat";
 
 // Mock data for tasks
 const mockTasks = [
@@ -134,6 +134,7 @@ const TasksTab = () => {
   const [isCompletedOpen, setIsCompletedOpen] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { openNitidinaChat } = useNitidinaChat();
   
   // Filter tasks based on the selected filter
   const openTasks = mockTasks.filter(task => task.status !== "completed");
@@ -152,9 +153,13 @@ const TasksTab = () => {
         description: `"${task.title}" has been marked as complete.`,
       });
     } else if (action === "delegate") {
+      // Generate a prompt for Nitidina about delegating the task
+      const prompt = `I'd like to delegate this task: "${task.title}". Can you help me set up an automated workflow in Nítido Coworker?`;
+      openNitidinaChat(prompt);
+      
       toast({
-        title: "Task delegated",
-        description: `"${task.title}" has been delegated to the appropriate AI agent.`,
+        title: "Opening Nitidina chat",
+        description: "Asking about delegating this task to Coworker.",
       });
     } else if (action === "navigate" && task.relatedTab) {
       // Navigate to the related tab
@@ -163,6 +168,15 @@ const TasksTab = () => {
         title: "Navigating",
         description: `Going to ${task.relatedTab.charAt(0).toUpperCase() + task.relatedTab.slice(1)} tab.`,
       });
+    } else if (action === "ask") {
+      // Generate a task-specific prompt for Nitidina
+      const isOverdue = new Date(task.dueDate) < new Date();
+      const prompt = `I need help with a ${task.priority} priority task: "${task.title}", due on ${task.dueDate}.${isOverdue ? ' This task is overdue.' : ''} 
+      ${task.description ? `Task details: ${task.description}` : ''}
+      ${task.relatedTab ? `This is related to the ${task.relatedTab} section.` : ''}
+      Can you help me with this?`;
+      
+      openNitidinaChat(prompt);
     }
   };
   
@@ -357,6 +371,27 @@ const TasksTab = () => {
                             </Tooltip>
                           </TooltipProvider>
                         )}
+                        
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <Button 
+                                variant="ghost" 
+                                size="sm"
+                                className="h-8 w-8 p-0"
+                                onClick={() => handleTaskAction(task, "ask")}
+                              >
+                                <svg className="h-4 w-4 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                <span className="sr-only">Ask Nitidina</span>
+                              </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>Ask Nitidina</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
                         
                         {task.relatedTab && (
                           <TooltipProvider>
@@ -629,10 +664,9 @@ const TasksTab = () => {
             variant="outline" 
             size="sm" 
             className="ml-auto border-blue-200 text-blue-700"
-            onClick={() => toast({
-              title: "Nitidina AI",
-              description: "I'm here to help you manage your tasks and deal workflow.",
-            })}
+            onClick={() => {
+              openNitidinaChat("What tasks are due this week for this deal?");
+            }}
           >
             Ask for help
           </Button>

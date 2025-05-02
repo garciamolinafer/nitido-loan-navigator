@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Card } from "@/components/ui/card";
+import { useNitidinaChat } from "@/hooks/useNitidinaChat";
 
 interface TaskItemProps {
   task: Task;
@@ -15,6 +16,7 @@ interface TaskItemProps {
 
 export function TaskItem({ task, onToggleStatus }: TaskItemProps) {
   const [showActions, setShowActions] = useState(false);
+  const { openNitidinaChat } = useNitidinaChat();
   
   // Format the due date (e.g., "May 5, 2025")
   const formattedDate = new Date(task.dueDate).toLocaleDateString("en-US", {
@@ -70,6 +72,43 @@ export function TaskItem({ task, onToggleStatus }: TaskItemProps) {
 
   // Determine if task is overdue
   const isOverdue = new Date(task.dueDate) < new Date() && !task.completed;
+
+  // Handle ask Nitidina button click
+  const handleAskNitidina = () => {
+    const message = generateNitidinaPrompt(task);
+    openNitidinaChat(message);
+  };
+
+  // Generate a context-aware prompt based on the task
+  const generateNitidinaPrompt = (task: Task) => {
+    // Format a natural language prompt based on task properties
+    const taskType = task.type.toLowerCase();
+    const priority = task.priority;
+    const dueDate = formattedDate;
+    const dealName = task.dealName;
+    
+    let prompt = `I need help with a ${priority} priority task: "${task.title}" for the ${dealName} deal, due on ${dueDate}.`;
+    
+    // Add context based on task type
+    if (taskType === "covenant") {
+      prompt += " This is a covenant compliance review. Can you help me analyze the latest financial data or prepare a compliance report?";
+    } else if (taskType === "document") {
+      prompt += " I need to review or prepare documentation. Can you help me draft this or explain what's required?";
+    } else if (taskType === "drawdown") {
+      prompt += " This involves a loan drawdown. Can you help me prepare the drawdown request or check the payment details?";
+    } else if (taskType === "market") {
+      prompt += " I need to review market data. Can you help me analyze or prepare this information?";
+    } else if (taskType === "compliance") {
+      prompt += " This is a compliance task. Can you help me understand the requirements or prepare the necessary documentation?";
+    }
+    
+    // Add urgency context
+    if (isOverdue) {
+      prompt += " This task is overdue, so I need urgent assistance.";
+    }
+    
+    return prompt;
+  };
 
   return (
     <Card 
@@ -144,6 +183,7 @@ export function TaskItem({ task, onToggleStatus }: TaskItemProps) {
                     size="sm" 
                     variant="outline"
                     className="h-8 w-8 p-0" 
+                    onClick={handleAskNitidina}
                   >
                     <MessageSquare className="h-4 w-4" />
                   </Button>
