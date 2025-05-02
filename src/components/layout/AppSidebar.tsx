@@ -7,7 +7,7 @@ import {
   SidebarMenuButton,
   SidebarFooter
 } from "@/components/ui/sidebar";
-import { Briefcase, CalendarCheck2, MessageSquare, Robot, LayoutGrid, Home } from "lucide-react";
+import { Briefcase, CalendarCheck2, MessageSquare, Bot, LayoutGrid, Home } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function AppSidebar() {
@@ -32,7 +32,7 @@ export default function AppSidebar() {
     },
     {
       name: "Coworker",
-      icon: Robot,
+      icon: Bot,
       path: "/coworker",
       tooltip: "Coworker (Agentic Hub): AI-driven workflows and process automation center."
     },
