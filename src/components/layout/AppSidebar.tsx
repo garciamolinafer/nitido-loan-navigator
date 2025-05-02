@@ -51,7 +51,7 @@ export default function AppSidebar() {
           <img 
             src="/lovable-uploads/81831d78-066c-447a-b858-55ad7163b4c5.png" 
             alt="Nítido Logo" 
-            className="h-8" 
+            className="h-6" 
           />
         </div>
         <SidebarMenu>
