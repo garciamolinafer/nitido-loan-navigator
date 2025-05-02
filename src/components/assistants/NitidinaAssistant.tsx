@@ -42,7 +42,7 @@ export function NitidinaAssistant() {
         variant="default"
       >
         <Avatar className="h-12 w-12">
-          <AvatarImage src="/placeholder.svg" alt="Nitidina" />
+          <AvatarImage src="/lovable-uploads/7d678ec7-7fbc-4476-90b4-b046b2c0ad1c.png" alt="Nitidina" />
           <AvatarFallback>Ni</AvatarFallback>
         </Avatar>
       </Button>
@@ -53,7 +53,7 @@ export function NitidinaAssistant() {
           <div className="flex items-center justify-between p-3 border-b">
             <div className="flex items-center gap-2">
               <Avatar className="h-8 w-8">
-                <AvatarImage src="/placeholder.svg" alt="Nitidina" />
+                <AvatarImage src="/lovable-uploads/7d678ec7-7fbc-4476-90b4-b046b2c0ad1c.png" alt="Nitidina" />
                 <AvatarFallback>Ni</AvatarFallback>
               </Avatar>
               <span className="font-medium">Nitidina</span>
@@ -70,7 +70,7 @@ export function NitidinaAssistant() {
           <div className="flex-grow overflow-y-auto p-3 h-80 flex flex-col gap-3">
             <div className="flex gap-2">
               <Avatar className="h-8 w-8 mt-1">
-                <AvatarImage src="/placeholder.svg" alt="Nitidina" />
+                <AvatarImage src="/lovable-uploads/7d678ec7-7fbc-4476-90b4-b046b2c0ad1c.png" alt="Nitidina" />
                 <AvatarFallback>Ni</AvatarFallback>
               </Avatar>
               <div>
@@ -104,7 +104,7 @@ export function NitidinaAssistant() {
         <Card className="fixed bottom-20 right-6 w-60 shadow-lg z-50 cursor-pointer" onClick={() => setIsMinimized(false)}>
           <CardContent className="p-3 flex items-center gap-2">
             <Avatar className="h-8 w-8">
-              <AvatarImage src="/placeholder.svg" alt="Nitidina" />
+              <AvatarImage src="/lovable-uploads/7d678ec7-7fbc-4476-90b4-b046b2c0ad1c.png" alt="Nitidina" />
               <AvatarFallback>Ni</AvatarFallback>
             </Avatar>
             <span className="text-sm">Chat with Nitidina</span>

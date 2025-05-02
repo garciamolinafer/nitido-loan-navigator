@@ -39,7 +39,7 @@ export function NitidinaGreeting({ activeDeals, issueCount }: NitidinaGreetingPr
         
         <div className="flex items-start gap-4">
           <Avatar className="h-10 w-10">
-            <AvatarImage src="/placeholder.svg" alt="Nitidina" />
+            <AvatarImage src="/lovable-uploads/7d678ec7-7fbc-4476-90b4-b046b2c0ad1c.png" alt="Nitidina" />
             <AvatarFallback>Ni</AvatarFallback>
           </Avatar>
           
