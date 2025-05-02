@@ -82,10 +82,10 @@ export function CalendarView({ tasks }: CalendarViewProps) {
             day_today: "bg-gray-100 text-gray-900",
           }}
           components={{
-            DayContent: ({ day }) => (
+            DayContent: (props) => (
               <div className="flex flex-col items-center">
-                <div className="text-sm">{day.day}</div>
-                {renderCalendarDay(day.date)}
+                <div className="text-sm">{props.date.getDate()}</div>
+                {renderCalendarDay(props.date)}
               </div>
             ),
           }}
