@@ -7,6 +7,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sh
 import { TaskItem } from "./TaskItem";
 import { Card } from "@/components/ui/card";
 import { format } from "date-fns";
+import { DayContentProps } from "react-day-picker";
 
 interface CalendarViewProps {
   tasks: Task[];
@@ -43,44 +44,42 @@ export function CalendarView({ tasks, onToggleStatus }: CalendarViewProps) {
   };
 
   // Render custom day content with task indicators
-  const renderDayContent = (day: React.ComponentProps<typeof CalendarComponent>["components"]["DayContent"]) => {
-    return function DayContent(props: any) {
-      if (!props.date) return null;
-      
-      const tasksForDay = getTasksForDate(props.date);
-      
-      const hasOverdueTasks = tasksForDay.some(task => 
-        new Date(task.dueDate) < new Date() && !task.completed
-      );
-      
-      const hasHighPriorityTasks = tasksForDay.some(task => 
-        task.priority === "high" && !task.completed
-      );
-      
-      return (
-        <div className="relative w-full h-full flex flex-col items-center">
-          <day.type {...props} className="pointer-events-auto" />
-          {tasksForDay.length > 0 && (
-            <div className="flex gap-1 mt-1">
-              <div 
-                className={`w-2 h-2 rounded-full ${
-                  hasOverdueTasks 
-                    ? "bg-red-500" 
-                    : hasHighPriorityTasks 
-                    ? "bg-amber-500" 
-                    : "bg-blue-500"
-                }`}
-              />
-              {tasksForDay.length > 1 && (
-                <div className="text-xs font-medium text-muted-foreground">
-                  +{tasksForDay.length - 1}
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      );
-    };
+  const renderDayContent = (props: DayContentProps) => {
+    if (!props.date) return null;
+    
+    const tasksForDay = getTasksForDate(props.date);
+    
+    const hasOverdueTasks = tasksForDay.some(task => 
+      new Date(task.dueDate) < new Date() && !task.completed
+    );
+    
+    const hasHighPriorityTasks = tasksForDay.some(task => 
+      task.priority === "high" && !task.completed
+    );
+    
+    return (
+      <div className="relative w-full h-full flex flex-col items-center">
+        <div className="pointer-events-auto">{props.date.getDate()}</div>
+        {tasksForDay.length > 0 && (
+          <div className="flex gap-1 mt-1">
+            <div 
+              className={`w-2 h-2 rounded-full ${
+                hasOverdueTasks 
+                  ? "bg-red-500" 
+                  : hasHighPriorityTasks 
+                  ? "bg-amber-500" 
+                  : "bg-blue-500"
+              }`}
+            />
+            {tasksForDay.length > 1 && (
+              <div className="text-xs font-medium text-muted-foreground">
+                +{tasksForDay.length - 1}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    );
   };
 
   return (
