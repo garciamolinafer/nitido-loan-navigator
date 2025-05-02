@@ -141,7 +141,7 @@ const AiChatTab = () => {
       <div className="border-b p-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Avatar className="h-10 w-10">
-            <AvatarImage src="/placeholder.svg" alt="Nítido Paralegal" />
+            <AvatarImage src="/lovable-uploads/48b1cc5d-7d2e-4ad9-9b0b-e5608ebbee17.png" alt="Nítido Paralegal" />
             <AvatarFallback>NP</AvatarFallback>
           </Avatar>
           <div>
@@ -201,7 +201,7 @@ const AiChatTab = () => {
             >
               {msg.sender === 'ai' && (
                 <Avatar className="h-8 w-8 mt-1">
-                  <AvatarImage src="/placeholder.svg" alt="AI" />
+                  <AvatarImage src="/lovable-uploads/48b1cc5d-7d2e-4ad9-9b0b-e5608ebbee17.png" alt="AI" />
                   <AvatarFallback>NP</AvatarFallback>
                 </Avatar>
               )}
