@@ -47,7 +47,7 @@ export default function AppSidebar() {
   return (
     <Sidebar>
       <SidebarContent>
-        <div className="mt-2 mb-6 flex justify-center">
+        <div className="mt-2 mb-6 flex justify-start pl-4">
           <img 
             src="/lovable-uploads/81831d78-066c-447a-b858-55ad7163b4c5.png" 
             alt="Nítido Logo" 
