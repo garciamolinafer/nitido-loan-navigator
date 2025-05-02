@@ -1,6 +1,6 @@
 
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, useLocation } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 
@@ -19,7 +19,16 @@ import AiChatTab from "@/components/deals/detail/AiChatTab";
 
 const DealDetails = () => {
   const { dealId } = useParams();
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState("summary");
+
+  // Handle hash changes to switch tabs
+  useEffect(() => {
+    const hash = location.hash.replace('#', '');
+    if (hash && ["summary", "documents", "tasks", "covenants", "loanAdmin", "contacts", "communications", "kyc", "aiChat"].includes(hash)) {
+      setActiveTab(hash);
+    }
+  }, [location.hash]);
 
   // Use dealId to fetch the deal data, or fall back to mock data
   const deal = {
