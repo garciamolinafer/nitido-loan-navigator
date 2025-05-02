@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { X, Send, MinusCircle } from "lucide-react";
@@ -48,7 +47,7 @@ export function NitidinaAssistant() {
       setIsMinimized(false);
     } else {
       if (!isOpen) {
-        openNitidinaChat();
+        openNitidinaChat("");
       } else {
         closeNitidinaChat();
       }
