@@ -6,6 +6,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { ArrowLeft, Check, AlertTriangle } from "lucide-react";
 import DealSummary from "@/components/deals/detail/DealSummary";
 import { Button } from "@/components/ui/button";
+import { LoanAdminTab } from "@/components/deals/detail/LoanAdminTab";
 
 const DealDetails = () => {
   const { dealId } = useParams();
@@ -180,7 +181,7 @@ const DealDetails = () => {
           </TabsContent>
           
           <TabsContent value="loanAdmin" className="pt-2">
-            <p>Loan Admin tab content will go here.</p>
+            <LoanAdminTab deal={deal} />
           </TabsContent>
           
           <TabsContent value="contacts" className="pt-2">
