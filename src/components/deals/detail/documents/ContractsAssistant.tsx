@@ -52,13 +52,13 @@ export const ContractsAssistant = ({ selectedDocument, onClose, onMinimize }: Co
         
         // Generate specific responses based on the selected document and user query
         if (selectedDocument) {
-          const userQuery = message.toLowerCase();
+          const lowerCaseMessage = message.toLowerCase();
           
-          if (selectedDocument.id === "doc-004" && userQuery.includes("change")) {
+          if (selectedDocument.id === "doc-004" && lowerCaseMessage.includes("change")) {
             responseText = "This amendment increases the facility from $45M to $50M and extends the maturity by 6 months. It also relaxes the Net Leverage covenant from 3.5× to 4.0× until 2026 (see Section 4.2).";
-          } else if (selectedDocument.id === "doc-001" && (userQuery.includes("extract") || userQuery.includes("covenant"))) {
+          } else if (selectedDocument.id === "doc-001" && (lowerCaseMessage.includes("extract") || lowerCaseMessage.includes("covenant"))) {
             responseText = "Extracting key provisions... Done. I've identified 8 financial covenants, events of default, and other key terms. The data is now linked to the Covenants and Loan Admin sections.\n\nCovenant: Net Leverage ≤3.5× (Section 5.3), Current Status: Breach. I've updated the Covenants tab with this info.";
-          } else if (userQuery.includes("ingest") || userQuery.includes("analyze")) {
+          } else if (lowerCaseMessage.includes("ingest") || lowerCaseMessage.includes("analyze")) {
             responseText = `I'll analyze ${selectedDocument.title}. This may take a moment...`;
             
             // Simulate a follow-up message after "processing"
@@ -72,7 +72,7 @@ export const ContractsAssistant = ({ selectedDocument, onClose, onMinimize }: Co
               setMessages(prev => [...prev, aiMessage]);
             }, 2000);
           }
-        } else if (userQuery.includes("summarize") || userQuery.includes("summary")) {
+        } else if (lowerCaseMessage.includes("summarize") || lowerCaseMessage.includes("summary")) {
           responseText = "Please select a document first so I know which one to summarize.";
         }
         
