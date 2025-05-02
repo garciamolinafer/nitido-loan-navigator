@@ -1,5 +1,6 @@
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Sparkles } from "lucide-react";
 
 interface DealTabsProps {
   activeTab: string;
@@ -67,7 +68,10 @@ const DealTabs = ({ activeTab, onTabChange }: DealTabsProps) => {
           value="aiChat" 
           className="py-2 px-4 rounded-none data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:shadow-none"
         >
-          AI Chat
+          <div className="flex items-center gap-1">
+            AI Chat
+            <Sparkles className="h-3.5 w-3.5" />
+          </div>
         </TabsTrigger>
       </TabsList>
     </div>

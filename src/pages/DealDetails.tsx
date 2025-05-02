@@ -46,7 +46,11 @@ const DealDetails = () => {
         <Tabs 
           defaultValue="summary" 
           value={activeTab} 
-          onValueChange={setActiveTab} 
+          onValueChange={(value) => {
+            setActiveTab(value);
+            // Update URL hash without triggering a page reload
+            window.history.replaceState(null, '', `#${value}`);
+          }} 
           className="space-y-4"
         >
           <DealTabs activeTab={activeTab} onTabChange={setActiveTab} />
