@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { dealData } from "@/data/deals";
 
@@ -33,7 +32,7 @@ export function useDealData() {
   const [deals] = useState<Deal[]>(dealData);
   const [filteredDeals, setFilteredDeals] = useState<Deal[]>(dealData);
   const [filters, setFilters] = useState<FilterOptions>({});
-  const [currentSort, setCurrentSort] = useState({ field: "name", direction: "asc" });
+  const [currentSort, setCurrentSort] = useState<{ field: string; direction: 'asc' | 'desc' }>({ field: "name", direction: "asc" });
 
   const filterDeals = (newFilters: FilterOptions) => {
     const updatedFilters = { ...filters, ...newFilters };
@@ -78,7 +77,7 @@ export function useDealData() {
     setFilteredDeals(result);
   };
 
-  const sortDealsArray = (deals: Deal[], field: string, direction: string) => {
+  const sortDealsArray = (deals: Deal[], field: string, direction: 'asc' | 'desc') => {
     return deals.sort((a: any, b: any) => {
       // Handle numeric fields
       if (field === 'lenders') {

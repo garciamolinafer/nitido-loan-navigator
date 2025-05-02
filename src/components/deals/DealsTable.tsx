@@ -64,7 +64,7 @@ export function DealsTable({ deals, onSort, currentSort }: DealsTableProps) {
               {renderSortableHeader('amount', 'Amount')}
             </TableHead>
             <TableHead className="hidden md:table-cell">
-              {renderSortableHeader('lead', 'Lead Arranger')}
+              {renderSortableHeader('leadArranger', 'Lead Arranger')}
             </TableHead>
             <TableHead>
               {renderSortableHeader('status', 'Status')}
@@ -90,12 +90,12 @@ export function DealsTable({ deals, onSort, currentSort }: DealsTableProps) {
                     {deal.name}
                   </Link>
                   <div className="text-xs text-muted-foreground md:hidden">
-                    {deal.type} • {deal.lead}
+                    {deal.type} • {deal.leadArranger}
                   </div>
                 </TableCell>
                 <TableCell className="hidden md:table-cell">{deal.type}</TableCell>
                 <TableCell>{deal.amount}</TableCell>
-                <TableCell className="hidden md:table-cell">{deal.lead}</TableCell>
+                <TableCell className="hidden md:table-cell">{deal.leadArranger}</TableCell>
                 <TableCell>
                   <div className="flex items-center gap-1.5">
                     <div className={`w-2 h-2 rounded-full ${getStatusColor(deal.status)}`} />
@@ -106,7 +106,7 @@ export function DealsTable({ deals, onSort, currentSort }: DealsTableProps) {
                   {deal.flag && (
                     <Badge variant="destructive" className="flex items-center gap-1">
                       <AlertTriangle className="h-3 w-3" />
-                      <span>{deal.flag}</span>
+                      <span>{deal.flag.message}</span>
                     </Badge>
                   )}
                 </TableCell>

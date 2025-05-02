@@ -36,13 +36,13 @@ const Deals = () => {
             onSearch={handleSearch}
             onFilterChange={handleFilterChange}
             onSort={handleSort}
-            currentSort={currentSort}
+            currentSort={currentSort as { field: string; direction: 'asc' | 'desc' }}
           />
           
           <DealsTable 
             deals={filteredDeals}
             onSort={handleSort}
-            currentSort={currentSort} 
+            currentSort={currentSort as { field: string; direction: 'asc' | 'desc' }} 
           />
         </div>
       </div>
