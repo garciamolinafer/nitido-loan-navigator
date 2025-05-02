@@ -1,10 +1,10 @@
 
 import { useState } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { X } from "lucide-react";
-import { NitidinaAvatar } from "@/components/assistants/NitidinaAvatar";
 
 interface NitidinaGreetingProps {
   activeDeals: number;
@@ -38,7 +38,10 @@ export function NitidinaGreeting({ activeDeals, issueCount }: NitidinaGreetingPr
         </Button>
         
         <div className="flex items-start gap-4">
-          <NitidinaAvatar size="md" />
+          <Avatar className="h-10 w-10">
+            <AvatarImage src="/placeholder.svg" alt="Nitidina" />
+            <AvatarFallback>Ni</AvatarFallback>
+          </Avatar>
           
           <div className="flex-1">
             <h2 className="text-lg font-semibold mb-2">

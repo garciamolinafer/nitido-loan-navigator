@@ -1,11 +1,11 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { X, Send, MinusCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-import { NitidinaAvatar } from "./NitidinaAvatar";
 
 export function NitidinaAssistant() {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +41,10 @@ export function NitidinaAssistant() {
         className="fixed right-6 bottom-6 rounded-full h-12 w-12 shadow-lg p-0 animate-pulse hover:animate-none z-50"
         variant="default"
       >
-        <NitidinaAvatar size="lg" />
+        <Avatar className="h-12 w-12">
+          <AvatarImage src="/placeholder.svg" alt="Nitidina" />
+          <AvatarFallback>Ni</AvatarFallback>
+        </Avatar>
       </Button>
 
       {/* Chat window */}
@@ -49,7 +52,10 @@ export function NitidinaAssistant() {
         <div className="fixed bottom-20 right-6 w-80 md:w-96 bg-white rounded-lg shadow-lg z-50 flex flex-col border">
           <div className="flex items-center justify-between p-3 border-b">
             <div className="flex items-center gap-2">
-              <NitidinaAvatar size="sm" />
+              <Avatar className="h-8 w-8">
+                <AvatarImage src="/placeholder.svg" alt="Nitidina" />
+                <AvatarFallback>Ni</AvatarFallback>
+              </Avatar>
               <span className="font-medium">Nitidina</span>
             </div>
             <div className="flex gap-2">
@@ -63,7 +69,10 @@ export function NitidinaAssistant() {
           </div>
           <div className="flex-grow overflow-y-auto p-3 h-80 flex flex-col gap-3">
             <div className="flex gap-2">
-              <NitidinaAvatar size="sm" className="mt-1" />
+              <Avatar className="h-8 w-8 mt-1">
+                <AvatarImage src="/placeholder.svg" alt="Nitidina" />
+                <AvatarFallback>Ni</AvatarFallback>
+              </Avatar>
               <div>
                 <p className="bg-gray-100 rounded-lg p-3 text-sm">
                   Good morning, Marina. Today I've reconciled your Outlook calendar with pending portfolio actions. 
@@ -94,7 +103,10 @@ export function NitidinaAssistant() {
       {isMinimized && (
         <Card className="fixed bottom-20 right-6 w-60 shadow-lg z-50 cursor-pointer" onClick={() => setIsMinimized(false)}>
           <CardContent className="p-3 flex items-center gap-2">
-            <NitidinaAvatar size="sm" />
+            <Avatar className="h-8 w-8">
+              <AvatarImage src="/placeholder.svg" alt="Nitidina" />
+              <AvatarFallback>Ni</AvatarFallback>
+            </Avatar>
             <span className="text-sm">Chat with Nitidina</span>
           </CardContent>
         </Card>
