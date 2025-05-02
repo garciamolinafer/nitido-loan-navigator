@@ -72,7 +72,7 @@ export default function AppSidebar() {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild tooltip="Home: Overview dashboard and welcome page." isActive={true}>
+            <SidebarMenuButton asChild tooltip="Home: Overview dashboard and welcome page." isActive={false}>
               <Link to="/">
                 <Home className="h-5 w-5" />
                 <span>Home</span>
