@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
@@ -7,6 +6,7 @@ import { ArrowLeft, Check, AlertTriangle } from "lucide-react";
 import DealSummary from "@/components/deals/detail/DealSummary";
 import { Button } from "@/components/ui/button";
 import { LoanAdminTab } from "@/components/deals/detail/LoanAdminTab";
+import { CommunicationsTab } from "@/components/deals/detail/CommunicationsTab";
 
 const DealDetails = () => {
   const { dealId } = useParams();
@@ -189,7 +189,7 @@ const DealDetails = () => {
           </TabsContent>
           
           <TabsContent value="communications" className="pt-2">
-            <p>Communications tab content will go here.</p>
+            <CommunicationsTab />
           </TabsContent>
           
           <TabsContent value="kyc" className="pt-2">
