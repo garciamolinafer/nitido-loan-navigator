@@ -48,11 +48,13 @@ export default function AppSidebar() {
     <Sidebar>
       <SidebarContent>
         <div className="mt-2 mb-6 flex justify-start pl-4">
-          <img 
-            src="/lovable-uploads/81831d78-066c-447a-b858-55ad7163b4c5.png" 
-            alt="Nítido Logo" 
-            className="h-6" 
-          />
+          <Link to="/">
+            <img 
+              src="/lovable-uploads/81831d78-066c-447a-b858-55ad7163b4c5.png" 
+              alt="Nítido Logo" 
+              className="h-6 cursor-pointer transition-opacity hover:opacity-80" 
+            />
+          </Link>
         </div>
         <SidebarMenu>
           {navItems.map((item) => (
