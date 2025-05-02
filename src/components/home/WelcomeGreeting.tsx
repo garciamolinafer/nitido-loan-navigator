@@ -1,7 +1,7 @@
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Link } from "react-router-dom";
+import { NitidinaAvatar } from "@/components/assistants/NitidinaAvatar";
 
 interface WelcomeGreetingProps {
   userName: string;
@@ -20,10 +20,7 @@ export function WelcomeGreeting({ userName }: WelcomeGreetingProps) {
     <Card className="border-0 shadow-sm bg-gradient-to-r from-slate-50 to-white">
       <CardContent className="p-6">
         <div className="flex items-start gap-4">
-          <Avatar className="h-10 w-10">
-            <AvatarImage src="/lovable-uploads/7d678ec7-7fbc-4476-90b4-b046b2c0ad1c.png" alt="Nitidina" />
-            <AvatarFallback>Ni</AvatarFallback>
-          </Avatar>
+          <NitidinaAvatar size="md" />
           <div>
             <h2 className="text-xl font-semibold mb-2">
               Good {getTimeOfDay()}, {userName}
