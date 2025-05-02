@@ -48,7 +48,11 @@ export default function AppSidebar() {
     <Sidebar>
       <SidebarContent>
         <div className="mt-2 mb-6 flex justify-center">
-          <h2 className="text-2xl font-bold">Nítido</h2>
+          <img 
+            src="/lovable-uploads/81831d78-066c-447a-b858-55ad7163b4c5.png" 
+            alt="Nítido Logo" 
+            className="h-8" 
+          />
         </div>
         <SidebarMenu>
           {navItems.map((item) => (
