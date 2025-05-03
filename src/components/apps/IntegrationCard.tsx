@@ -144,7 +144,8 @@ export function IntegrationCard({ integration, isExpanded, onClick }: Integratio
             )}
             
             {integration.status === "action-needed" && (
-              <Button size="sm" variant="warning" onClick={handleConfigure}>Fix Issue</Button>
+              // Changed "warning" to "destructive" as warning is not a valid variant
+              <Button size="sm" variant="destructive" onClick={handleConfigure}>Fix Issue</Button>
             )}
           </div>
         </div>

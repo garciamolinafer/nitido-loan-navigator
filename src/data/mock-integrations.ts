@@ -9,7 +9,8 @@ import {
   Mail, 
   MessageSquare, 
   ChartBar, 
-  Dropbox, 
+  // Replacing Dropbox with Folder since Dropbox icon isn't available
+  FolderArchive, 
   Slack
 } from "lucide-react";
 
@@ -171,7 +172,7 @@ export const getMockIntegrations = (): Integration[] => {
       description: "Cloud file storage for loan documentation",
       category: "document",
       status: "disconnected",
-      icon: Dropbox,
+      icon: FolderArchive, // Changed from Dropbox to FolderArchive
       capabilities: [
         "Sync Dropbox folders with loan docs",
         "Automatic versioning",
