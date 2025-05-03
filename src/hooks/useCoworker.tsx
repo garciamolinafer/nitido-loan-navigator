@@ -1,4 +1,3 @@
-
 import { createContext, useContext, useState, ReactNode } from "react";
 import { mockWorkflows, mockTemplates } from "@/data/mock-workflows";
 
@@ -110,7 +109,7 @@ export const CoworkerProvider = ({ children }: { children: ReactNode }) => {
   const [selectedTemplateId, setSelectedTemplateId] = useState<string | null>(null);
   const [selectedRunId, setSelectedRunId] = useState<string | null>(null);
   const [agenticMessages, setAgenticMessages] = useState<{role: "user" | "assistant", content: string}[]>([
-    {role: "assistant", content: "Hello Marina, I'm Agentic. How can I help you automate your workflows today? You can ask me to create a new workflow, run an existing one, or help you monitor your tasks."}
+    {role: "assistant", content: "Hello Marina, I'm Nítido Coworker. How can I help you automate your workflows today? You can ask me to create a new workflow, run an existing one, or help you monitor your tasks."}
   ]);
 
   const addAgenticMessage = (message: {role: "user" | "assistant", content: string}) => {
@@ -121,7 +120,7 @@ export const CoworkerProvider = ({ children }: { children: ReactNode }) => {
     // In a real app, this would trigger the workflow to continue
     setApprovals(prev => prev.filter(a => a.id !== approvalId));
     
-    // Add a message from Agentic acknowledging the approval
+    // Add a message from Nítido Coworker acknowledging the approval
     addAgenticMessage({
       role: "assistant", 
       content: `Thank you for approving this step. I'll continue with the workflow execution.`

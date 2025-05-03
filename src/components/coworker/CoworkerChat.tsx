@@ -75,11 +75,11 @@ export function CoworkerChat() {
       <div className="p-4 border-b">
         <div className="flex items-center gap-3">
           <Avatar className="h-8 w-8 bg-primary">
-            <AvatarImage src="/lovable-uploads/7d678ec7-7fbc-4476-90b4-b046b2c0ad1c.png" alt="Agentic" />
+            <AvatarImage src="/lovable-uploads/7d678ec7-7fbc-4476-90b4-b046b2c0ad1c.png" alt="Nítido Coworker" />
             <AvatarFallback><Bot size={16} /></AvatarFallback>
           </Avatar>
           <div>
-            <h3 className="font-medium">Agentic</h3>
+            <h3 className="font-medium">Nítido Coworker</h3>
             <p className="text-xs text-muted-foreground">AI Workflow Assistant</p>
           </div>
         </div>
@@ -94,7 +94,7 @@ export function CoworkerChat() {
             >
               {msg.role === "assistant" && (
                 <Avatar className="h-8 w-8 mt-1 bg-primary">
-                  <AvatarImage src="/lovable-uploads/7d678ec7-7fbc-4476-90b4-b046b2c0ad1c.png" alt="Agentic" />
+                  <AvatarImage src="/lovable-uploads/7d678ec7-7fbc-4476-90b4-b046b2c0ad1c.png" alt="Nítido Coworker" />
                   <AvatarFallback><Bot size={16} /></AvatarFallback>
                 </Avatar>
               )}
@@ -126,7 +126,7 @@ export function CoworkerChat() {
       <div className="p-4 border-t">
         <form onSubmit={handleSendMessage} className="flex gap-2">
           <Input
-            placeholder="Message Agentic..."
+            placeholder="Message Nítido Coworker..."
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             className="flex-1"

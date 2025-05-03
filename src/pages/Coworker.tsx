@@ -10,7 +10,7 @@ const Coworker = () => {
   const [activeView, setActiveView] = useState<"builder" | "dashboard">("builder");
   
   return (
-    <Layout title="Coworker (Agentic Hub)">
+    <Layout title="Coworker (Nítido Hub)">
       <CoworkerProvider>
         <div className="flex h-[calc(100vh-120px)] overflow-hidden">
           <CoworkerSidebar />
