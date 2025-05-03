@@ -25,22 +25,22 @@ export default function AppSidebar() {
       tooltip: "Task Planner: Manage tasks, deadlines, and upcoming steps for all deals."
     },
     {
-      name: "Communications",
+      name: "Comms Hub",
       icon: MessageSquare,
       path: "/communications",
-      tooltip: "Communications: Check messages, discussions, and email-like threads with deal participants."
+      tooltip: "Comms Hub: Check messages, discussions, and email-like threads with deal participants."
     },
     {
-      name: "Coworker",
+      name: "Coworker Panel",
       icon: Bot,
       path: "/coworker",
-      tooltip: "Coworker (Agentic Hub): AI-driven workflows and process automation center."
+      tooltip: "Coworker Panel (Agentic Hub): AI-driven workflows and process automation center."
     },
     {
-      name: "Apps",
+      name: "Apps Setup",
       icon: LayoutGrid,
       path: "/apps",
-      tooltip: "Apps Place: Access integrated apps and third-party tool connections."
+      tooltip: "Apps Setup: Access integrated apps and third-party tool connections."
     }
   ];
 
