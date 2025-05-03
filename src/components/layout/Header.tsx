@@ -15,9 +15,17 @@ import { Settings, Bell, Globe } from "lucide-react";
 interface HeaderProps {
   title?: string;
   userName?: string;
+  userSurname?: string;
 }
 
-export default function Header({ title = "Home", userName = "Marina" }: HeaderProps) {
+export default function Header({ 
+  title = "Home", 
+  userName = "Marina", 
+  userSurname = "Neves" 
+}: HeaderProps) {
+  // Format the name as "surname, name"
+  const formattedName = userSurname ? `${userSurname}, ${userName}` : userName;
+
   return (
     <header className="flex h-16 items-center border-b px-4 bg-white">
       <div className="flex items-center gap-2">
@@ -66,7 +74,7 @@ export default function Header({ title = "Home", userName = "Marina" }: HeaderPr
                 <AvatarImage src="/lovable-uploads/99dc9282-192b-493e-9ed1-597ec856ecea.png" alt={userName} />
                 <AvatarFallback>MN</AvatarFallback>
               </Avatar>
-              <span className="hidden md:inline-block">{userName}</span>
+              <span className="hidden md:inline-block">{formattedName}</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">

@@ -5,9 +5,10 @@ import { NitidinaAvatar } from "@/components/ui/nitidina-avatar";
 
 interface WelcomeGreetingProps {
   userName: string;
+  userSurname?: string;
 }
 
-export function WelcomeGreeting({ userName }: WelcomeGreetingProps) {
+export function WelcomeGreeting({ userName, userSurname }: WelcomeGreetingProps) {
   // Get time of day for greeting
   const getTimeOfDay = () => {
     const hour = new Date().getHours();

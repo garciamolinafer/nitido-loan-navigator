@@ -9,15 +9,21 @@ interface LayoutProps {
   children: ReactNode;
   title?: string;
   userName?: string;
+  userSurname?: string;
 }
 
-export default function Layout({ children, title = "Home", userName = "Marina" }: LayoutProps) {
+export default function Layout({ 
+  children, 
+  title = "Home", 
+  userName = "Marina", 
+  userSurname = "Neves" 
+}: LayoutProps) {
   return (
     <SidebarProvider>
       <div className="flex min-h-screen w-full">
         <AppSidebar />
         <div className="flex flex-1 flex-col">
-          <Header title={title} userName={userName} />
+          <Header title={title} userName={userName} userSurname={userSurname} />
           <main className="flex-1 p-6 bg-background">{children}</main>
         </div>
         <NitidinaAssistant />
