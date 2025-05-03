@@ -1,12 +1,12 @@
 
 import Layout from "@/components/layout/Layout";
+import { AppsIntegrationHub } from "@/components/apps/AppsIntegrationHub";
 
 const Apps = () => {
   return (
-    <Layout title="Apps Place">
+    <Layout title="Apps Setup">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl font-bold mb-6">Apps Place</h2>
-        <p>This is where the apps integration center will be implemented.</p>
+        <AppsIntegrationHub />
       </div>
     </Layout>
   );
