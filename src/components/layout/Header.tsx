@@ -21,7 +21,7 @@ interface HeaderProps {
 export default function Header({ 
   title = "Home", 
   userName = "Marina", 
-  userSurname = "Neves" 
+  userSurname = "Neumann" 
 }: HeaderProps) {
   // Format the name as "surname, name"
   const formattedName = userSurname ? `${userSurname}, ${userName}` : userName;

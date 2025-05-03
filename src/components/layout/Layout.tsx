@@ -16,7 +16,7 @@ export default function Layout({
   children, 
   title = "Home", 
   userName = "Marina", 
-  userSurname = "Neves" 
+  userSurname = "Neumann" 
 }: LayoutProps) {
   return (
     <SidebarProvider>

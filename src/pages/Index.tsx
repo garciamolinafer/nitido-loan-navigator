@@ -7,10 +7,10 @@ import { RecentActivity } from "@/components/home/RecentActivity";
 
 const Index = () => {
   return (
-    <Layout title="Welcome, Marina!" userName="Marina" userSurname="Neves">
+    <Layout title="Welcome, Marina!" userName="Marina" userSurname="Neumann">
       <div className="max-w-7xl mx-auto">
         <div className="mb-6">
-          <WelcomeGreeting userName="Marina" userSurname="Neves" />
+          <WelcomeGreeting userName="Marina" userSurname="Neumann" />
         </div>
         
         <StatGrid />
