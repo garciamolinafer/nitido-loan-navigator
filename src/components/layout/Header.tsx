@@ -63,7 +63,7 @@ export default function Header({ title = "Home", userName = "Marina" }: HeaderPr
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="flex items-center gap-2" size="sm">
               <Avatar className="h-8 w-8">
-                <AvatarImage src="/placeholder.svg" alt={userName} />
+                <AvatarImage src="/lovable-uploads/99dc9282-192b-493e-9ed1-597ec856ecea.png" alt={userName} />
                 <AvatarFallback>MN</AvatarFallback>
               </Avatar>
               <span className="hidden md:inline-block">{userName}</span>
