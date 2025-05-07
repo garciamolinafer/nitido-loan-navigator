@@ -1,4 +1,3 @@
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface NitidinaAvatarProps {
@@ -15,7 +14,7 @@ export function NitidinaAvatar({ size = "md", className = "" }: NitidinaAvatarPr
   
   return (
     <Avatar className={`${sizeClasses[size]} ${className}`}>
-      <AvatarImage src="/lovable-uploads/7d678ec7-7fbc-4476-90b4-b046b2c0ad1c.png" alt="Nitidina" />
+      <AvatarImage src="/lovable-uploads/Nitidina Image.jpg" alt="Nitidina" />
       <AvatarFallback>Ni</AvatarFallback>
     </Avatar>
   );
