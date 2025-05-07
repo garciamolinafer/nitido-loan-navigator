@@ -14,7 +14,7 @@ export function NitidinaAvatar({ size = "md", className = "" }: NitidinaAvatarPr
   
   return (
     <Avatar className={`${sizeClasses[size]} ${className}`}>
-      <AvatarImage src="/lovable-uploads/Nitidina Image.jpg" alt="Nitidina" />
+      <AvatarImage src="/lovable-uploads/Nitidina image.jpg" alt="Nitidina" />
       <AvatarFallback>Ni</AvatarFallback>
     </Avatar>
   );

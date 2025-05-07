@@ -6,7 +6,7 @@ const mockParticipants = [
   { id: "2", name: "John", avatar: "/placeholder.svg" },
   { id: "3", name: "Alice", avatar: "/placeholder.svg" },
   { id: "4", name: "Michael", avatar: "/placeholder.svg" },
-  { id: "5", name: "Nitidina", avatar: "/lovable-uploads/Nitidina Image.jpg", isAI: true },
+  { id: "5", name: "Nitidina", avatar: "/lovable-uploads/Nitidina image.jpg", isAI: true },
   { id: "6", name: "Paralegal", avatar: "/placeholder.svg", isAI: true },
   { id: "7", name: "Bob", avatar: "/placeholder.svg" },
   { id: "8", name: "Carol", avatar: "/placeholder.svg" },
