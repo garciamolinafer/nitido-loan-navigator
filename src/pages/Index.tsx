@@ -1,9 +1,9 @@
-
 import Layout from "@/components/layout/Layout";
 import { WelcomeGreeting } from "@/components/home/WelcomeGreeting";
 import { StatGrid } from "@/components/home/StatGrid";
 import { GettingStartedTips } from "@/components/home/GettingStartedTips";
 import { RecentActivity } from "@/components/home/RecentActivity";
+import { RecentTransactions } from "@/components/home/RecentTransactions";
 
 const Index = () => {
   return (
@@ -23,6 +23,7 @@ const Index = () => {
             <GettingStartedTips />
           </div>
         </div>
+        <RecentTransactions />
       </div>
     </Layout>
   );

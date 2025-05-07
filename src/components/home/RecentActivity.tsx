@@ -1,7 +1,8 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText, Clock, MessageSquare } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Badge } from "@/components/ui/badge";
+import { AlertTriangle, Mail, UserX } from "lucide-react";
 
 export function RecentActivity() {
   const activities = [
@@ -31,6 +32,40 @@ export function RecentActivity() {
       iconBg: "bg-green-100",
       time: "today",
       link: "/communications",
+    },
+  ];
+
+  // Mock data for recent transactions
+  const recentTransactions = [
+    {
+      id: "1",
+      name: "Apollo Energy Drawdown",
+      amount: "$5,000,000",
+      role: "Agent",
+      hasPendingTasks: true,
+      hasPendingMessages: false,
+      hasOverdueCovenants: true,
+      hasMissingKyc: false,
+    },
+    {
+      id: "2",
+      name: "Project Titan Repayment",
+      amount: "$2,500,000",
+      role: "Lender",
+      hasPendingTasks: false,
+      hasPendingMessages: true,
+      hasOverdueCovenants: false,
+      hasMissingKyc: true,
+    },
+    {
+      id: "3",
+      name: "Solaris Bridge Loan",
+      amount: "$1,200,000",
+      role: "MLA",
+      hasPendingTasks: false,
+      hasPendingMessages: false,
+      hasOverdueCovenants: false,
+      hasMissingKyc: false,
     },
   ];
 
