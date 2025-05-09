@@ -1,13 +1,13 @@
-
 import { 
   Sidebar, 
   SidebarContent,
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
-  SidebarFooter
+  SidebarFooter,
+  SidebarSeparator
 } from "@/components/ui/sidebar";
-import { Briefcase, CalendarCheck2, MessageSquare, Bot, LayoutGrid, Home } from "lucide-react";
+import { Briefcase, CalendarCheck2, MessageSquare, Bot, LayoutGrid, Home, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function AppSidebar() {
@@ -35,6 +35,12 @@ export default function AppSidebar() {
       icon: Bot,
       path: "/coworker",
       tooltip: "Coworker Panel (Agentic Hub): AI-driven workflows and process automation center."
+    },
+    {
+      name: "Meet the AI Assistants",
+      icon: Sparkles,
+      path: "/assistants",
+      tooltip: "Meet the AI Assistants: Learn about and interact with our AI assistants."
     },
     {
       name: "Apps Setup",
