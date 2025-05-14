@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from "react";
 import { ThreadType } from "@/hooks/useCommsData";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -9,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { useNitidinaChat } from "@/hooks/useNitidinaChat";
 import {
-  Bot,
+  Stars,
   User,
   MessageSquare,
   Mail,
@@ -102,7 +101,7 @@ export function ConversationView({ thread }: ConversationViewProps) {
           
           <div className="flex items-center gap-2">
             <Button onClick={handleNitidinaHelp} size="sm" variant="outline" className="flex items-center gap-1">
-              <Bot className="h-4 w-4" />
+              <Stars className="h-4 w-4" />
               <span>Ask Nitidina</span>
             </Button>
             <Button size="icon" variant="ghost" title="Email summary">
@@ -124,7 +123,7 @@ export function ConversationView({ thread }: ConversationViewProps) {
                 <AvatarImage src={participant.avatar} alt={participant.name} />
                 <AvatarFallback>
                   {participant.isAI ? 
-                    (participant.name === "Nitidina" ? <Bot className="h-3 w-3" /> : <User className="h-3 w-3" />) : 
+                    (participant.name === "Nitidina" ? <NitidinaAvatar size="sm" /> : <Stars className="h-3 w-3" />) : 
                     getInitials(participant.name)}
                 </AvatarFallback>
               </Avatar>

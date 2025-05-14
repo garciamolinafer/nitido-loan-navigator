@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/tooltip";
 import { useNavigate } from "react-router-dom";
 import { useNitidinaChat } from "@/hooks/useNitidinaChat";
+import { TeamAssignmentPopup } from "./TeamAssignmentPopup";
 
 // Mock data for tasks
 const mockTasks = [
@@ -180,6 +181,111 @@ const TasksTab = () => {
     }
   };
   
+  const handleTeamAssignment = (taskId: string, selectedMembers: string[]) => {
+    // In a real application, this would update the task's assignees in the backend
+    toast({
+      title: "Task assigned",
+      description: `Task assigned to ${selectedMembers.length} team member${selectedMembers.length > 1 ? 's' : ''}.`,
+    });
+  };
+  
+  const renderTaskActions = (task: typeof mockTasks[0]) => (
+    <div className="flex gap-1">
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button 
+              variant="ghost" 
+              size="sm"
+              className="h-8 w-8 p-0"
+              onClick={() => handleTaskAction(task, "complete")}
+            >
+              <CheckCircle className="h-4 w-4 text-green-500" />
+              <span className="sr-only">Mark as Complete</span>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Mark as Complete</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+      
+      <TeamAssignmentPopup 
+        task={task}
+        onAssign={(selectedMembers) => handleTeamAssignment(task.id, selectedMembers)}
+      />
+      
+      {task.integration && (
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button 
+                variant="ghost" 
+                size="sm"
+                className="h-8 w-8 p-0"
+                onClick={() => handleTaskAction(task, "delegate")}
+              >
+                <svg className="h-4 w-4 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 8V4m0 4 3-3m-3 3-3-3" />
+                  <path d="M9 9h6v6h6l-3 3-3 3H9l-3-3-3-3h6V9Z" />
+                </svg>
+                <span className="sr-only">Delegate to AI</span>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Delegate to AI</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      )}
+      
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button 
+              variant="ghost" 
+              size="sm"
+              className="h-8 w-8 p-0"
+              onClick={() => handleTaskAction(task, "ask")}
+            >
+              <svg className="h-4 w-4 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span className="sr-only">Ask Nitidina</span>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Ask Nitidina</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+      
+      {task.relatedTab && (
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button 
+                variant="ghost" 
+                size="sm"
+                className="h-8 w-8 p-0"
+                onClick={() => handleTaskAction(task, "navigate")}
+              >
+                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="m10 8 6 4-6 4V8Z" />
+                </svg>
+                <span className="sr-only">Go to {task.relatedTab}</span>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Go to {task.relatedTab.charAt(0).toUpperCase() + task.relatedTab.slice(1)}</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      )}
+    </div>
+  );
+  
   // Check if a task is overdue
   const isOverdue = (dueDate: string) => {
     const today = new Date();
@@ -328,95 +434,7 @@ const TasksTab = () => {
                       </Badge>
                     </TableCell>
                     <TableCell>
-                      <div className="flex gap-1">
-                        <TooltipProvider>
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <Button 
-                                variant="ghost" 
-                                size="sm"
-                                className="h-8 w-8 p-0"
-                                onClick={() => handleTaskAction(task, "complete")}
-                              >
-                                <CheckCircle className="h-4 w-4 text-green-500" />
-                                <span className="sr-only">Mark as Complete</span>
-                              </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p>Mark as Complete</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
-                        
-                        {task.integration && (
-                          <TooltipProvider>
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <Button 
-                                  variant="ghost" 
-                                  size="sm"
-                                  className="h-8 w-8 p-0"
-                                  onClick={() => handleTaskAction(task, "delegate")}
-                                >
-                                  <svg className="h-4 w-4 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M12 8V4m0 4 3-3m-3 3-3-3" />
-                                    <path d="M9 9h6v6h6l-3 3-3 3H9l-3-3-3-3h6V9Z" />
-                                  </svg>
-                                  <span className="sr-only">Delegate to AI</span>
-                                </Button>
-                              </TooltipTrigger>
-                              <TooltipContent>
-                                <p>Delegate to AI</p>
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
-                        )}
-                        
-                        <TooltipProvider>
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <Button 
-                                variant="ghost" 
-                                size="sm"
-                                className="h-8 w-8 p-0"
-                                onClick={() => handleTaskAction(task, "ask")}
-                              >
-                                <svg className="h-4 w-4 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                                </svg>
-                                <span className="sr-only">Ask Nitidina</span>
-                              </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p>Ask Nitidina</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
-                        
-                        {task.relatedTab && (
-                          <TooltipProvider>
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <Button 
-                                  variant="ghost" 
-                                  size="sm"
-                                  className="h-8 w-8 p-0"
-                                  onClick={() => handleTaskAction(task, "navigate")}
-                                >
-                                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <circle cx="12" cy="12" r="10" />
-                                    <path d="m10 8 6 4-6 4V8Z" />
-                                  </svg>
-                                  <span className="sr-only">Go to {task.relatedTab}</span>
-                                </Button>
-                              </TooltipTrigger>
-                              <TooltipContent>
-                                <p>Go to {task.relatedTab.charAt(0).toUpperCase() + task.relatedTab.slice(1)}</p>
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
-                        )}
-                      </div>
+                      {renderTaskActions(task)}
                     </TableCell>
                   </TableRow>
                 ))
@@ -550,31 +568,7 @@ const TasksTab = () => {
                       </Badge>
                     </TableCell>
                     <TableCell>
-                      <div className="flex gap-1">
-                        <Button 
-                          variant="ghost" 
-                          size="sm"
-                          className="h-8 w-8 p-0"
-                          onClick={() => handleTaskAction(task, "complete")}
-                        >
-                          <CheckCircle className="h-4 w-4 text-green-500" />
-                          <span className="sr-only">Complete</span>
-                        </Button>
-                        {task.relatedTab && (
-                          <Button 
-                            variant="ghost" 
-                            size="sm"
-                            className="h-8 w-8 p-0"
-                            onClick={() => handleTaskAction(task, "navigate")}
-                          >
-                            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <circle cx="12" cy="12" r="10" />
-                              <path d="m10 8 6 4-6 4V8Z" />
-                            </svg>
-                            <span className="sr-only">Go to {task.relatedTab}</span>
-                          </Button>
-                        )}
-                      </div>
+                      {renderTaskActions(task)}
                     </TableCell>
                   </TableRow>
                 ))}
